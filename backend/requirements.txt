@@ -1,8 +1,8 @@
-fastapi
-uvicorn
-sqlalchemy
-pydantic<2.0
-python-dotenv
 python-jose[cryptography]
 bcrypt
 python-multipart
+fastapi==0.95.2
+uvicorn==0.22.0
+sqlalchemy==2.0.20
+pydantic==1.10.13
+python-dotenv==1.0.0
