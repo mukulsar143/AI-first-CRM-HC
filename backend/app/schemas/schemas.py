@@ -18,7 +18,7 @@ class UserResponse(UserBase):
     created_at: datetime
 
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 class Token(BaseModel):
     access_token: str
@@ -38,7 +38,7 @@ class ScoreResponse(ScoreBase):
     created_at: datetime
 
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 class CharityBase(BaseModel):
     name: str
@@ -49,7 +49,7 @@ class CharityResponse(CharityBase):
     id: int
 
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 class UserCharityBase(BaseModel):
     charity_id: int
