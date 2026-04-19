@@ -11,15 +11,9 @@ app = FastAPI(title="Digital Heroes API")
 def on_startup():
     Base.metadata.create_all(bind=engine)
 
-# Configure CORS
-origins = [
-    "http://localhost:5173",  # Vite default
-    "https://digitalheroes.vercel.app", # Placeholder for production
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

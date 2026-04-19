@@ -1,8 +1,8 @@
-fastapi[all]==0.110.0
-sqlalchemy==2.0.28
-psycopg2-binary==2.9.9
-python-jose[cryptography]==3.3.0
-bcrypt==4.0.1
-python-multipart==0.0.9
-pydantic[email]==2.6.3
-python-dotenv==1.0.1
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+python-dotenv
+python-jose[cryptography]
+bcrypt
+python-multipart
