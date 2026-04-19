@@ -11,8 +11,9 @@ class UserCreate(UserBase):
 class UserLogin(UserBase):
     password: str
 
-class UserResponse(UserBase):
+class UserResponse(BaseModel):
     id: int
+    email: str
     subscription_status: str
     is_admin: bool
     created_at: datetime
@@ -41,12 +42,15 @@ class ScoreResponse(ScoreBase):
         orm_mode = True
 
 class CharityBase(BaseModel):
-    name: str
+    name: str = ""
     description: Optional[str] = None
     image_url: Optional[str] = None
 
-class CharityResponse(CharityBase):
+class CharityResponse(BaseModel):
     id: int
+    name: str
+    description: Optional[str] = None
+    image_url: Optional[str] = None
 
     class Config:
         orm_mode = True
@@ -59,6 +63,9 @@ class UserCharityResponse(UserCharityBase):
     id: int
     user_id: int
 
+    class Config:
+        orm_mode = True
+
 class DrawResponse(BaseModel):
     id: int
     numbers: List[int]
@@ -66,7 +73,7 @@ class DrawResponse(BaseModel):
     created_at: datetime
 
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 class SuccessResponse(BaseModel):
     success: bool = True
@@ -74,4 +81,4 @@ class SuccessResponse(BaseModel):
 
 class ErrorResponse(BaseModel):
     success: bool = False
-    error: str
+    error: str = ""
