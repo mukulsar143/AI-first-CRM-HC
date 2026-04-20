@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from .routes import auth, scores, charity, draw, admin
-from .db.session import engine, Base
+from .db.init_admin import create_default_admin
+from .db.session import engine, Base, SessionLocal
 from .models import models # Ensure models are loaded
 
 app = FastAPI(title="Digital Heroes API")
@@ -10,6 +11,11 @@ app = FastAPI(title="Digital Heroes API")
 @app.on_event("startup")
 def on_startup():
     Base.metadata.create_all(bind=engine)
+    db = SessionLocal()
+    try:
+        create_default_admin(db)
+    finally:
+        db.close()
 
 app.add_middleware(
     CORSMiddleware,
